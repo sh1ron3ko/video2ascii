@@ -6,12 +6,12 @@ frameSeq=0;
 symbols='$$M#nnt++/;:,,..       ';
  for k = 1 : N
      frame = readFrame(v,'default');
-     if rem(k,3)~=0     %ÿ3֡ȡ1֡
+     if rem(k,3)~=0
          continue;
      end
     frameSeq=frameSeq+1;
     im=rgb2gray(frame);
-    im=imresize(im,0.25,'nearest'); %720*1280 -> 72*128
+    im=imresize(im,0.1); %720*1280 -> 72*128
 %     imshow(im);
     text=cellfun(@(x) symbols(1+floor((length(symbols)-1)*x)),num2cell(im2double(im)));
     dlmwrite([outDir num2str(frameSeq) '.txt'],text,'delimiter','');
